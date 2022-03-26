@@ -10,7 +10,12 @@
         <label class="login__label">Password: </label>
         <input class="login__input" type="password" />
       </div>
-      <button class="login__button">Login</button>
+      <button
+        :class="isDisabled ? 'login__button--disabled' : 'login__button'"
+        :disabled="isDisabled"
+      >
+        Login
+      </button>
     </form>
   </div>
 </template>
@@ -21,6 +26,9 @@ import { Component, Vue } from "vue-property-decorator";
 @Component
 export default class Login extends Vue {
   msg = "Please Log In";
+
+  // holds state of login button
+  isDisabled = false;
 }
 </script>
 
@@ -49,6 +57,21 @@ export default class Login extends Vue {
 
 .login__button {
   background-color: #41b883; /* mint */
+  border: none;
+  border-radius: 2rem;
+  color: white;
+  padding: 1rem 3rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.login__button:hover {
+  cursor: pointer;
+}
+
+.login__button--disabled {
+  background-color: #30664e; /* mint */
   border: none;
   border-radius: 2rem;
   color: white;
